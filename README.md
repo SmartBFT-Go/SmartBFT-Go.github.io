@@ -11,3 +11,11 @@ You can read our paper [here](paper.pdf)
 - [Write Ahead Log (WAL)](godoc/pkg/github.com/SmartBFT-Go/consensus/pkg/wal/index.html)
 
 [godoc](https://raw.githubusercontent.com/SmartBFT-Go/consensus/master/godoc/localhost%3A6060/pkg/github.com/SmartBFT-Go/consensus/pkg/index.html)
+
+# Architecture of the library integration into Fabric
+![][fabric-arch.png]
+
+# Normal consensus flow
+![][flow.png]
+#  
+
