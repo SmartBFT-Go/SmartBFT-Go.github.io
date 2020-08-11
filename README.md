@@ -13,9 +13,9 @@ You can read our paper [here](paper.pdf)
 [godoc](https://raw.githubusercontent.com/SmartBFT-Go/consensus/master/godoc/localhost%3A6060/pkg/github.com/SmartBFT-Go/consensus/pkg/index.html)
 
 # Architecture of the library integration into Fabric
-![][fabric-arch.png]
+![alt text][https://raw.githubusercontent.com/SmartBFT-Go/SmartBFT-Go.github.io/master/fabric-arch.png]
 
 # Normal consensus flow
-![][flow.png]
+![alt-text][https://raw.githubusercontent.com/SmartBFT-Go/SmartBFT-Go.github.io/master/flow.png]
 #  
 
