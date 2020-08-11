@@ -193,7 +193,7 @@
 		
 			
 			
-			<h2 id="Application">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=300:533#L4">Application</a>
+			<h2 id="Application">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=300:629#L4">Application</a>
 				<a class="permalink" href="index.html#Application">&#xb6;</a>
 				
 				
@@ -205,7 +205,8 @@ Application delivers the consented proposal and corresponding signatures.
 			<pre>type Application interface {
     <span class="comment">// Deliver delivers the given proposal and signatures.</span>
     <span class="comment">// After the call returns we assume that this proposal is stored in persistent memory.</span>
-    Deliver(proposal <a href="../types/index.html">bft</a>.<a href="../types/index.html#Proposal">Proposal</a>, signature []<a href="../types/index.html">bft</a>.<a href="../types/index.html#Signature">Signature</a>)
+    <span class="comment">// It returns whether this proposal was a reconfiguration and the current config.</span>
+    Deliver(proposal <a href="../types/index.html">bft</a>.<a href="../types/index.html#Proposal">Proposal</a>, signature []<a href="../types/index.html">bft</a>.<a href="../types/index.html#Signature">Signature</a>) <a href="../types/index.html">bft</a>.<a href="../types/index.html#Reconfig">Reconfig</a>
 }</pre>
 
 			
@@ -222,7 +223,7 @@ Application delivers the consented proposal and corresponding signatures.
 		
 			
 			
-			<h2 id="Assembler">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1064:1269#L22">Assembler</a>
+			<h2 id="Assembler">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1160:1365#L23">Assembler</a>
 				<a class="permalink" href="index.html#Assembler">&#xb6;</a>
 				
 				
@@ -251,7 +252,7 @@ Assembler creates proposals.
 		
 			
 			
-			<h2 id="Comm">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=589:1030#L11">Comm</a>
+			<h2 id="Comm">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=685:1126#L12">Comm</a>
 				<a class="permalink" href="index.html#Comm">&#xb6;</a>
 				
 				
@@ -284,7 +285,7 @@ Comm enables the communications between the nodes.
 		
 			
 			
-			<h2 id="Logger">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=2980:3233#L71">Logger</a>
+			<h2 id="Logger">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=3260:3513#L74">Logger</a>
 				<a class="permalink" href="index.html#Logger">&#xb6;</a>
 				
 				
@@ -315,7 +316,7 @@ Logger defines the contract for logging.
 		
 			
 			
-			<h2 id="RequestInspector">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=2540:2666#L58">RequestInspector</a>
+			<h2 id="RequestInspector">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=2784:2910#L61">RequestInspector</a>
 				<a class="permalink" href="index.html#RequestInspector">&#xb6;</a>
 				
 				
@@ -343,7 +344,7 @@ RequestInspector extracts info (i.e. request id and client id) from a given requ
 		
 			
 			
-			<h2 id="Signer">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1536:1765#L36">Signer</a>
+			<h2 id="Signer">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1632:1861#L37">Signer</a>
 				<a class="permalink" href="index.html#Signer">&#xb6;</a>
 				
 				
@@ -373,7 +374,7 @@ Signer signs on the given data.
 		
 			
 			
-			<h2 id="Synchronizer">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=2767:2934#L64">Synchronizer</a>
+			<h2 id="Synchronizer">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=3011:3214#L67">Synchronizer</a>
 				<a class="permalink" href="index.html#Synchronizer">&#xb6;</a>
 				
 				
@@ -384,8 +385,8 @@ Synchronizer reaches the cluster nodes and fetches blocks in order to sync the r
 
 			<pre>type Synchronizer interface {
     <span class="comment">// Sync blocks indefinitely until the replica&#39;s state is synchronized to the latest decision,</span>
-    <span class="comment">// and returns it.</span>
-    Sync() <a href="../types/index.html">bft</a>.<a href="../types/index.html#Decision">Decision</a>
+    <span class="comment">// and returns it with info about reconfiguration.</span>
+    Sync() <a href="../types/index.html">bft</a>.<a href="../types/index.html#SyncResponse">SyncResponse</a>
 }</pre>
 
 			
@@ -402,7 +403,7 @@ Synchronizer reaches the cluster nodes and fetches blocks in order to sync the r
 		
 			
 			
-			<h2 id="Verifier">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1819:2450#L44">Verifier</a>
+			<h2 id="Verifier">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1915:2694#L45">Verifier</a>
 				<a class="permalink" href="index.html#Verifier">&#xb6;</a>
 				
 				
@@ -422,6 +423,8 @@ Verifier validates data and verifies signatures.
     VerifySignature(signature <a href="../types/index.html">bft</a>.<a href="../types/index.html#Signature">Signature</a>) <a href="http://localhost:6060/pkg/builtin/#error">error</a>
     <span class="comment">// VerificationSequence returns the current verification sequence.</span>
     VerificationSequence() <a href="http://localhost:6060/pkg/builtin/#uint64">uint64</a>
+    <span class="comment">// RequestsFromProposal returns from the given proposal the included requests&#39; info</span>
+    RequestsFromProposal(proposal <a href="../types/index.html">bft</a>.<a href="../types/index.html#Proposal">Proposal</a>) []<a href="../types/index.html">bft</a>.<a href="../types/index.html#RequestInfo">RequestInfo</a>
 }</pre>
 
 			
@@ -438,7 +441,7 @@ Verifier validates data and verifies signatures.
 		
 			
 			
-			<h2 id="WriteAheadLog">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1310:1499#L29">WriteAheadLog</a>
+			<h2 id="WriteAheadLog">type <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/pkg/api/dependencies.go?s=1406:1595#L30">WriteAheadLog</a>
 				<a class="permalink" href="index.html#WriteAheadLog">&#xb6;</a>
 				
 				

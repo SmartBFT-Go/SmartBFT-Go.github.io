@@ -226,13 +226,16 @@
 					<dd>&nbsp; &nbsp; <a href="index.html#Node.AssembleProposal">func (n *Node) AssembleProposal(metadata []byte, requests [][]byte) bft.Proposal</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="index.html#Node.Deliver">func (n *Node) Deliver(proposal bft.Proposal, signature []bft.Signature)</a></dd>
+					<dd>&nbsp; &nbsp; <a href="index.html#Node.Deliver">func (n *Node) Deliver(proposal bft.Proposal, signature []bft.Signature) bft.Reconfig</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="index.html#Node.Nodes">func (n *Node) Nodes() []uint64</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="index.html#Node.RequestID">func (*Node) RequestID(req []byte) bft.RequestInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="index.html#Node.RequestsFromProposal">func (*Node) RequestsFromProposal(proposal bft.Proposal) []bft.RequestInfo</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="index.html#Node.SendConsensus">func (n *Node) SendConsensus(targetID uint64, message *smartbftprotos.Message)</a></dd>
@@ -253,7 +256,7 @@
 					<dd>&nbsp; &nbsp; <a href="index.html#Node.Stop">func (n *Node) Stop()</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="index.html#Node.Sync">func (*Node) Sync() bft.Decision</a></dd>
+					<dd>&nbsp; &nbsp; <a href="index.html#Node.Sync">func (*Node) Sync() bft.SyncResponse</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="index.html#Node.VerificationSequence">func (*Node) VerificationSequence() uint64</a></dd>
@@ -751,7 +754,7 @@
 
 			
 				
-				<h3 id="NewNode">func <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=3401:3539#L137">NewNode</a>
+				<h3 id="NewNode">func <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=3872:4010#L150">NewNode</a>
 					<a class="permalink" href="index.html#NewNode">&#xb6;</a>
 					
 					
@@ -764,7 +767,7 @@
 
 			
 				
-				<h3 id="Node.AssembleProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2017:2097#L85">AssembleProposal</a>
+				<h3 id="Node.AssembleProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2390:2470#L96">AssembleProposal</a>
 					<a class="permalink" href="index.html#Node.AssembleProposal">&#xb6;</a>
 					
 					
@@ -776,19 +779,19 @@
 				
 			
 				
-				<h3 id="Node.Deliver">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2847:2919#L114">Deliver</a>
+				<h3 id="Node.Deliver">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=3220:3305#L125">Deliver</a>
 					<a class="permalink" href="index.html#Node.Deliver">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (n *<a href="index.html#Node">Node</a>) Deliver(proposal <a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Proposal">Proposal</a>, signature []<a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Signature">Signature</a>)</pre>
+				<pre>func (n *<a href="index.html#Node">Node</a>) Deliver(proposal <a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Proposal">Proposal</a>, signature []<a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Signature">Signature</a>) <a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Reconfig">Reconfig</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="Node.Nodes">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=5395:5426#L223">Nodes</a>
+				<h3 id="Node.Nodes">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=5861:5892#L236">Nodes</a>
 					<a class="permalink" href="index.html#Node.Nodes">&#xb6;</a>
 					
 					
@@ -800,7 +803,7 @@
 				
 			
 				
-				<h3 id="Node.RequestID">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=995:1045#L40">RequestID</a>
+				<h3 id="Node.RequestID">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=999:1049#L40">RequestID</a>
 					<a class="permalink" href="index.html#Node.RequestID">&#xb6;</a>
 					
 					
@@ -812,7 +815,19 @@
 				
 			
 				
-				<h3 id="Node.SendConsensus">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2571:2649#L102">SendConsensus</a>
+				<h3 id="Node.RequestsFromProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1540:1614#L59">RequestsFromProposal</a>
+					<a class="permalink" href="index.html#Node.RequestsFromProposal">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (*<a href="index.html#Node">Node</a>) RequestsFromProposal(proposal <a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Proposal">Proposal</a>) []<a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#RequestInfo">RequestInfo</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Node.SendConsensus">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2944:3022#L113">SendConsensus</a>
 					<a class="permalink" href="index.html#Node.SendConsensus">&#xb6;</a>
 					
 					
@@ -824,7 +839,7 @@
 				
 			
 				
-				<h3 id="Node.SendTransaction">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2688:2751#L106">SendTransaction</a>
+				<h3 id="Node.SendTransaction">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=3061:3124#L117">SendTransaction</a>
 					<a class="permalink" href="index.html#Node.SendTransaction">&#xb6;</a>
 					
 					
@@ -836,7 +851,7 @@
 				
 			
 				
-				<h3 id="Node.Sign">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1862:1898#L75">Sign</a>
+				<h3 id="Node.Sign">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2235:2271#L86">Sign</a>
 					<a class="permalink" href="index.html#Node.Sign">&#xb6;</a>
 					
 					
@@ -848,7 +863,7 @@
 				
 			
 				
-				<h3 id="Node.SignProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1916:1972#L79">SignProposal</a>
+				<h3 id="Node.SignProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2289:2345#L90">SignProposal</a>
 					<a class="permalink" href="index.html#Node.SignProposal">&#xb6;</a>
 					
 					
@@ -860,7 +875,7 @@
 				
 			
 				
-				<h3 id="Node.Start">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=4724:4746#L184">Start</a>
+				<h3 id="Node.Start">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=5190:5212#L197">Start</a>
 					<a class="permalink" href="index.html#Node.Start">&#xb6;</a>
 					
 					
@@ -872,7 +887,7 @@
 				
 			
 				
-				<h3 id="Node.Stop">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=5244:5265#L211">Stop</a>
+				<h3 id="Node.Stop">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=5710:5731#L224">Stop</a>
 					<a class="permalink" href="index.html#Node.Stop">&#xb6;</a>
 					
 					
@@ -884,19 +899,19 @@
 				
 			
 				
-				<h3 id="Node.Sync">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=934:966#L36">Sync</a>
+				<h3 id="Node.Sync">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=934:970#L36">Sync</a>
 					<a class="permalink" href="index.html#Node.Sync">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (*<a href="index.html#Node">Node</a>) Sync() <a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#Decision">Decision</a></pre>
+				<pre>func (*<a href="index.html#Node">Node</a>) Sync() <a href="../../pkg/types/index.html">bft</a>.<a href="../../pkg/types/index.html#SyncResponse">SyncResponse</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="Node.VerificationSequence">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1804:1846#L71">VerificationSequence</a>
+				<h3 id="Node.VerificationSequence">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2177:2219#L82">VerificationSequence</a>
 					<a class="permalink" href="index.html#Node.VerificationSequence">&#xb6;</a>
 					
 					
@@ -908,7 +923,7 @@
 				
 			
 				
-				<h3 id="Node.VerifyConsenterSig">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1636:1709#L63">VerifyConsenterSig</a>
+				<h3 id="Node.VerifyConsenterSig">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2009:2082#L74">VerifyConsenterSig</a>
 					<a class="permalink" href="index.html#Node.VerifyConsenterSig">&#xb6;</a>
 					
 					
@@ -920,7 +935,7 @@
 				
 			
 				
-				<h3 id="Node.VerifyProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1159:1236#L48">VerifyProposal</a>
+				<h3 id="Node.VerifyProposal">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1163:1240#L48">VerifyProposal</a>
 					<a class="permalink" href="index.html#Node.VerifyProposal">&#xb6;</a>
 					
 					
@@ -932,7 +947,7 @@
 				
 			
 				
-				<h3 id="Node.VerifyRequest">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1536:1599#L59">VerifyRequest</a>
+				<h3 id="Node.VerifyRequest">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1909:1972#L70">VerifyRequest</a>
 					<a class="permalink" href="index.html#Node.VerifyRequest">&#xb6;</a>
 					
 					
@@ -944,7 +959,7 @@
 				
 			
 				
-				<h3 id="Node.VerifySignature">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=1727:1786#L67">VerifySignature</a>
+				<h3 id="Node.VerifySignature">func (*Node) <a href="http://localhost:6060/src/github.com/SmartBFT-Go/consensus/examples/naive_chain/node.go?s=2100:2159#L78">VerifySignature</a>
 					<a class="permalink" href="index.html#Node.VerifySignature">&#xb6;</a>
 					
 					
